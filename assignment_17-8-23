@@ -1,0 +1,74 @@
+//rand bit [7:0] X;
+//Write a constraint such that at any point only two bits of X is high.
+// link : https://edaplayground.com/x/PaJi
+class bit_cons;
+  rand bit[7:0] x;
+  
+  
+  constraint v1 { $countones==2 ; }
+endclass
+bit_cons ds;
+
+module reall;
+  initial begin
+    ds = new();
+    $display("x=%b",x);
+  end
+  end
+endmodule
+  
+  
+  //Given2 arrays A , B. Derive 3rd array C, such that it has elements of 
+  //A and B    but  should not repeat any elements.
+// link : https://edaplayground.com/x/94Mjent 
+class bit_arrayy;
+  int  a[] = {1,2,3,4,5};
+  int  b[] = {6,7,8,9,10} ;
+  int c[];
+   endclass
+        
+        bit_arrayy h1;
+        module execute;
+          initial begin
+            
+            h1 = new();
+            $display("a[]=%p",h1.a);
+            $display("b[]=%p",h1.b);
+            
+            h1.c = {h1.a,h1.b} ;
+            $display ("c[] = %p",h1.c);
+           
+          end
+          
+        endmodule
+        
+        
+      
+   // You are given a dynamic array of integers ‘addr’ that is of size 100. 
+   //How can     this array be resized
+   // to hold 200 elements while the lower 100 elements are preserved as
+   // in the original? Write
+//code for this.
+//link : https://edaplayground.com/x/fu8i
+
+   class q5;
+  rand bit[31:0] addr[];
+
+  constraint qq { addr.size>0 && addr.size<201 ;}
+  constraint rr { foreach(addr[i]) addr[i]>1;
+                 foreach(addr[i]) addr[i]<201;}
+endclass
+  q5 handle;
+  module finall;
+    
+    initial begin
+      
+      handle = new();
+      handle.randomize();
+      handle.addr = new[201](handle.addr); 
+      
+      $display("addr=%p",handle.addr);
+    end
+  endmodule
+  
+  
